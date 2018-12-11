@@ -1,8 +1,11 @@
 import React, { PureComponent } from 'react'
-import { connect } from 'dva'
+// import { connect } from 'dva'
 import { Layout, Menu, Breadcrumb, Icon } from 'antd'
 import HeaderPage from '../components/Layout/Header'
-import styles from './IndexPage.less'
+import menu from '../common/menu'
+import MenuItem from 'antd/lib/menu/MenuItem'
+import { Link } from 'dva/router'
+// import styles from './IndexPage.less'
 
 const { Header, Content, Footer, Sider } = Layout
 const SubMenu = Menu.SubMenu
@@ -10,67 +13,96 @@ const SubMenu = Menu.SubMenu
 export default class LayoutAdmin extends PureComponent {
   state = {
     collapsed: false,
+    singleMenu: [],
+    doubleMenu: []
+  }
+
+  componentDidMount() {
+    this.handleMenu()
   }
 
   onCollapse = (collapsed) => {
-    console.log(collapsed)
     this.setState({ collapsed })
   }
 
+  handleMenu = () => {
+    let singleMenu = []
+    let doubleMenu = []
+    menu.map((item) => {
+      if (item.children) {
+        doubleMenu.push(item)
+      } else {
+        singleMenu.push(item)
+      }
+    })
+    this.setState({
+      singleMenu: singleMenu,
+      doubleMenu: doubleMenu
+    })
+  }
+
   render() {
+    const { collapsed, singleMenu, doubleMenu } = this.state
+    console.log(singleMenu)
+    console.log(doubleMenu)
     return (
       <Layout style={{ minHeight: '100vh' }}>
         <Header style={{ background: '#fff', padding: 0, height: '72px' }}>
           <HeaderPage />
         </Header>
-        <Layout style={{background: '#fff'}}>
+        <Layout style={{ background: '#fff' }}>
           <Sider
-            collapsible
-            collapsed={this.state.collapsed}
-            onCollapse={this.onCollapse}
+              collapsed={collapsed}
+              collapsible
+              onCollapse={this.onCollapse}
           >
-            <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline">
-              <Menu.Item key="1">
-                <Icon type="pie-chart" />
-                <span>Option 1</span>
-              </Menu.Item>
-              <Menu.Item key="2">
-                <Icon type="desktop" />
-                <span>Option 2</span>
-              </Menu.Item>
-              <SubMenu
-                key="sub1"
-                title={<span><Icon type="user" /><span>User</span></span>}
-              >
-                <Menu.Item key="3">Tom</Menu.Item>
-                <Menu.Item key="4">Bill</Menu.Item>
-                <Menu.Item key="5">Alex</Menu.Item>
-              </SubMenu>
-              <SubMenu
-                key="sub2"
-                title={<span><Icon type="team" /><span>Team</span></span>}
-              >
-                <Menu.Item key="6">Team 1</Menu.Item>
-                <Menu.Item key="8">Team 2</Menu.Item>
-              </SubMenu>
-              <Menu.Item key="9">
-                <Icon type="file" />
-                <span>File</span>
-              </Menu.Item>
+            <Menu
+                defaultSelectedKeys={['0']}
+                mode="inline"
+                theme="dark"
+            >
+              {
+                singleMenu.length && singleMenu.map((item, index) => (
+                  <Menu.Item key={index}>
+                    <Link to={`/${item.name}`}>
+                      <Icon type={item.icon} />
+                      <span>{item.name}</span>
+                    </Link>
+
+                  </Menu.Item>
+                )
+                )
+              }
+              {
+                doubleMenu.length && doubleMenu.map((item) => (
+                  <SubMenu key={item.name}
+                      title={<span><Icon type={item.icon} /><span>{item.name}</span></span>}
+                  >
+                    {
+                      item.children.map((item) => (
+                        <MenuItem key={item.name}>
+                          <Icon type={item.icon} />
+                          <span>{item.name}</span>
+                        </MenuItem>
+                      ))
+                    }
+                  </SubMenu>
+                ))
+              }
             </Menu>
           </Sider>
           <Layout>
-          <Content style={{ margin: '0 16px' }}>
-            <Breadcrumb style={{ margin: '16px 0' }}>
-              <Breadcrumb.Item>User</Breadcrumb.Item>
-              <Breadcrumb.Item>Bill</Breadcrumb.Item>
-            </Breadcrumb>
-            <div style={{ padding: 24, background: '#fff', minHeight: 360 }}>
-              Bill is a cat.
-            </div>
-          </Content>
-          <Footer style={{ textAlign: 'center' }}>
-            Ant Design ©2018 Created by Ant UED
+            <Content style={{ margin: '0 16px' }}>
+              <Breadcrumb style={{ margin: '16px 0' }}>
+                {/* <Breadcrumb.Item>User</Breadcrumb.Item>
+                <Breadcrumb.Item>Bill</Breadcrumb.Item> */}
+              </Breadcrumb>
+              {/* <div style={{ padding: 24, background: '#fff', minHeight: 360 }}>
+                Bill is a cat.
+            </div> */}
+            </Content>
+            <Footer style={{ textAlign: 'center' }}>
+              Ant Design ©2018 Created by Ant UED
           </Footer>
           </Layout>
         </Layout>

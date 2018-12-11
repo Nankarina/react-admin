@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react'
-import { Icon, Menu, Dropdown, } from 'antd'
+import { Icon, Menu, Dropdown } from 'antd'
 import styles from './index.less'
 
 export default class Header extends PureComponent {
@@ -8,26 +8,45 @@ export default class Header extends PureComponent {
     const menu = (
       <Menu>
         <Menu.Item>
-          <a target="_blank" rel="noopener noreferrer" href="http://www.alipay.com/">个人中心</a>
+          <a
+              href="http://www.alipay.com/"
+              rel="noopener noreferrer"
+              target="_blank"
+          >个人中心</a>
         </Menu.Item>
         <Menu.Item>
-          <a target="_blank" rel="noopener noreferrer" href="http://www.taobao.com/">设置</a>
+          <a
+              href="http://www.taobao.com/"
+              rel="noopener noreferrer"
+              target="_blank"
+
+          >设置</a>
         </Menu.Item>
         <Menu.Item>
-          <a target="_blank" rel="noopener noreferrer" href="http://www.tmall.com/">退出登录</a>
+          <a
+              href="http://www.tmall.com/"
+              rel="noopener noreferrer"
+              target="_blank"
+          >退出登录</a>
         </Menu.Item>
       </Menu>
     )
     return (
       <div className={styles.Header}>
         <div className={styles.logo}>
-          <img src="../../../public/img/logo.jpg" alt="图片" />
+          <img
+              alt="图片"
+              src="../../../public/img/logo.jpg" 
+          />
           <span>后台管理系统</span>
         </div>
         <div className={styles.headerRight}>
           <Dropdown overlay={menu}>
-            <a className="ant-dropdown-link" href="#">
-              <Icon type="smile" style={{ marginRight: '7px' }} />
+            <a className="ant-dropdown-link">
+              <Icon
+                  style={{ marginRight: '7px' }} 
+                  type="smile"
+              />
               <span>admin</span>
               <Icon type="down" />
             </a>
