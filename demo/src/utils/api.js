@@ -1,0 +1,1 @@
+export const ORG_LIST = '/wps/combo/listOrganizationPage'
