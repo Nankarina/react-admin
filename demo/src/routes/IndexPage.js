@@ -1,9 +1,11 @@
 import React, { PureComponent } from 'react'
 // import { connect } from 'dva'
-import { Layout, Menu, Breadcrumb, Icon } from 'antd'
+import { Layout, Menu,  Icon } from 'antd'
 import HeaderPage from '../components/Layout/Header'
 import menu from '../common/menu'
 import MenuItem from 'antd/lib/menu/MenuItem'
+import Banner from '../components/Layout/banner'
+// import Main from '../components/Layout/main'
 import { Link } from 'dva/router'
 // import styles from './IndexPage.less'
 
@@ -14,7 +16,8 @@ export default class LayoutAdmin extends PureComponent {
   state = {
     collapsed: false,
     singleMenu: [],
-    doubleMenu: []
+    doubleMenu: [],
+    bill: menu[0].name
   }
 
   componentDidMount() {
@@ -24,7 +27,9 @@ export default class LayoutAdmin extends PureComponent {
   onCollapse = (collapsed) => {
     this.setState({ collapsed })
   }
-
+  handleSet = (data) => {
+    this.setState({ bill: data.name })
+  }
   handleMenu = () => {
     let singleMenu = []
     let doubleMenu = []
@@ -42,9 +47,8 @@ export default class LayoutAdmin extends PureComponent {
   }
 
   render() {
-    const { collapsed, singleMenu, doubleMenu } = this.state
-    console.log(singleMenu)
-    console.log(doubleMenu)
+    const { collapsed, singleMenu, doubleMenu, bill } = this.state
+    const hiStatus = true
     return (
       <Layout style={{ minHeight: '100vh' }}>
         <Header style={{ background: '#fff', padding: 0, height: '72px' }}>
@@ -63,8 +67,14 @@ export default class LayoutAdmin extends PureComponent {
             >
               {
                 singleMenu.length && singleMenu.map((item, index) => (
-                  <Menu.Item key={index}>
-                    <Link to={`/${item.name}`}>
+                  <Menu.Item
+                      key={index}
+                      onClick={() => this.handleSet(item)}
+                  >
+                    <Link
+                        replace={hiStatus}
+                        to={`/${item.name}`}
+                    >
                       <Icon type={item.icon} />
                       <span>{item.name}</span>
                     </Link>
@@ -92,14 +102,9 @@ export default class LayoutAdmin extends PureComponent {
             </Menu>
           </Sider>
           <Layout>
-            <Content style={{ margin: '0 16px' }}>
-              <Breadcrumb style={{ margin: '16px 0' }}>
-                {/* <Breadcrumb.Item>User</Breadcrumb.Item>
-                <Breadcrumb.Item>Bill</Breadcrumb.Item> */}
-              </Breadcrumb>
-              {/* <div style={{ padding: 24, background: '#fff', minHeight: 360 }}>
-                Bill is a cat.
-            </div> */}
+            <Content style={{ margin: '0 16px',minHeight: 903 }}>
+              <Banner dataList={bill}/>
+              {this.props.children}
             </Content>
             <Footer style={{ textAlign: 'center' }}>
               Ant Design ©2018 Created by Ant UED

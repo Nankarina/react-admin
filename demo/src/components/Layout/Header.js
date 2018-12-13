@@ -36,7 +36,7 @@ export default class Header extends PureComponent {
         <div className={styles.logo}>
           <img
               alt="图片"
-              src="../../../public/img/logo.jpg" 
+              src="../../../public/img/logo.jpg"
           />
           <span>后台管理系统</span>
         </div>
@@ -44,7 +44,7 @@ export default class Header extends PureComponent {
           <Dropdown overlay={menu}>
             <a className="ant-dropdown-link">
               <Icon
-                  style={{ marginRight: '7px' }} 
+                  style={{ marginRight: '7px' }}
                   type="smile"
               />
               <span>admin</span>

@@ -1,12 +1,13 @@
-*{
+* {
   margin: 0;
   padding: 0;
 }
-html, body, :global(#root) {
+html,
+body,
+:global(#root) {
   height: 100%;
   width: 100%;
 }
-
 :global(.context) {
   min-height: 800px;
   background: #fff;

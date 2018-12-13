@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react'
 class Single extends PureComponent {
   render() {
     return (
-      <div>ddddddd</div>
+      <div className="context">我是single部分</div>
     )
   }
 }

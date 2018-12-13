@@ -1,29 +1,33 @@
 import React from 'react';
-import { Router, Route, Switch } from 'dva/router';
+import { routerRedux, Route, Switch } from 'dva/router';
 import IndexPage from './routes/IndexPage'
 import Option from './routes/option'
 import Single from './routes/single'
+import File from './routes/file'
+const { ConnectedRouter } = routerRedux
 function RouterConfig({ history }) {
   return (
-    <Router history={history}>
+    <ConnectedRouter history={history}>
+    <IndexPage>
       <Switch>
         <Route
-            component={IndexPage}
-            exact
-            path="/"
-        />
-        <Router
             component={Option}
             exact
             path="/option"
         />
-        <Router
+        <Route
             component={Single}
             exact
             path="/single"
         />
+        <Route
+            component={File}
+            exact
+            path="/file"
+        />
       </Switch>
-    </Router>
+      </IndexPage>
+    </ConnectedRouter>
   );
 }
 

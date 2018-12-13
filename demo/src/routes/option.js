@@ -1,8 +1,11 @@
 import React, { PureComponent } from 'react'
+import TablePage from '../components/table/index'
 class Option extends PureComponent {
   render() {
     return (
-      <div>lalalal</div>
+      <div className="context">
+        <TablePage />
+      </div>
     )
   }
 }
