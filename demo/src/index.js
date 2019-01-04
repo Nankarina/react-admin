@@ -1,4 +1,6 @@
 import dva from 'dva';
+import createLoading from "dva-loading"
+
 import './index.less';
 
 // 1. Initialize
@@ -12,6 +14,7 @@ app.model(require('./models/example').default);
 
 // 4. Router
 app.router(require('./router').default);
-
+// 全局loading
+app.use(createLoading());
 // 5. Start
 app.start('#root');

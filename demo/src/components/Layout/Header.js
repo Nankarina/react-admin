@@ -1,9 +1,17 @@
 import React, { PureComponent } from 'react'
 import { Icon, Menu, Dropdown } from 'antd'
+import { connect } from "dva"
+
 import styles from './index.less'
 
-export default class Header extends PureComponent {
-
+class Header extends PureComponent {
+  loginOut = () =>{
+    console.log('in')
+    const { dispatch } = this.props
+    dispatch({
+      type: 'example/loginOut'
+    })
+  }
   render() {
     const menu = (
       <Menu>
@@ -23,10 +31,7 @@ export default class Header extends PureComponent {
           >设置</a>
         </Menu.Item>
         <Menu.Item>
-          <a
-              href="http://www.tmall.com/"
-              rel="noopener noreferrer"
-              target="_blank"
+          <a onClick={() => this.loginOut()}
           >退出登录</a>
         </Menu.Item>
       </Menu>
@@ -57,3 +62,5 @@ export default class Header extends PureComponent {
     )
   }
 }
+
+export default connect()(Header)

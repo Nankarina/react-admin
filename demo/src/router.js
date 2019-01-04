@@ -4,29 +4,46 @@ import IndexPage from './routes/IndexPage'
 import Option from './routes/option'
 import Single from './routes/single'
 import File from './routes/file'
+import Login from './routes/login'
 const { ConnectedRouter } = routerRedux
+
 function RouterConfig({ history }) {
   return (
     <ConnectedRouter history={history}>
-    <IndexPage>
       <Switch>
         <Route
-            component={Option}
-            exact
-            path="/option"
+          component={Login}
+          exact
+          path="/login"
         />
         <Route
-            component={Single}
-            exact
-            path="/single"
+          component={Login}
+          exact
+          path="/"
         />
         <Route
-            component={File}
-            exact
-            path="/file"
+          render={() => (<IndexPage>
+            <Switch>
+              <Route
+                component={Option}
+                exact
+                path="/Option"
+              />
+              
+              <Route
+                component={Single}
+                exact
+                path="/Single"
+              />
+              <Route
+                component={File}
+                exact
+                path="/File"
+              />
+            </Switch>
+          </IndexPage>)}
         />
       </Switch>
-      </IndexPage>
     </ConnectedRouter>
   );
 }

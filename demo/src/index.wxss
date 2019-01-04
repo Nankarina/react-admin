@@ -11,4 +11,65 @@ body,
 :global(.context) {
   min-height: 800px;
   background: #fff;
+  padding: 20px;
+}
+:global(.has-error .ant-form-explain) {
+  font-size: 12px;
+  margin: 5px 0;
+}
+:global(.ant-menu-dark.ant-menu-inline) {
+  background: #fff;
+  color: #eaeaea;
+}
+:global(.ant-menu-dark .ant-menu-submenu-title:hover) {
+  background: #fff;
+  color: #eaeaea;
+}
+:global(.ant-layout-sider-children) {
+  background: #fff;
+}
+:global(.ant-layout-sider-trigger) {
+  background: #fff !important;
+}
+:global(.anticon svg) {
+  color: gray;
+}
+:global(.ant-menu-dark .ant-menu-item > a) {
+  color: gray !important;
+}
+:global(.ant-menu-dark .ant-menu-inline.ant-menu-sub) {
+  background: #fff !important;
+  color: gray !important;
+  box-shadow: none !important;
+}
+:global(.ant-menu-submenu-title) {
+  color: gray;
+}
+:global(.ant-menu.ant-menu-dark .ant-menu-item-selected) {
+  background: #fff !important;
+  color: #5d83ff;
+}
+:global(.ant-menu-dark .ant-menu-item-selected > a) {
+  color: #5d83ff !important;
+}
+:global(.ant-menu-dark .ant-menu-item-selected > a:hover) {
+  color: #5d83ff !important;
+}
+:global(.ant-menu-dark .ant-menu-item:hover > a:hover, .ant-menu-dark .ant-menu-item-active > a) {
+  color: #5d83ff !important;
+}
+:global( .ant-menu-dark .ant-menu-submenu-title:hover) {
+  color: gray !important;
+}
+:global(.ant-menu-dark .ant-menu-item:hover, .ant-menu-dark .ant-menu-item-active) {
+  color: gray !important;
+}
+:global(.ant-menu-dark .ant-menu-item:hover, .ant-menu-dark .ant-menu-item-active) {
+  color: gray !important;
+}
+:global(.ant-menu-dark .ant-menu-item-active> a ) {
+  color: #5d83ff !important;
+}
+:global(.ant-menu-submenu .ant-menu-submenu-active) {
+  color: #5d83ff !important;
 }

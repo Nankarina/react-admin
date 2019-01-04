@@ -39,7 +39,9 @@ export default class LayoutAdmin extends PureComponent {
       } else {
         singleMenu.push(item)
       }
+      return doubleMenu
     })
+    console.log(doubleMenu)
     this.setState({
       singleMenu: singleMenu,
       doubleMenu: doubleMenu

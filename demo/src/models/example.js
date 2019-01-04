@@ -1,4 +1,5 @@
 import { getCompanyList } from '../services/example'
+import { routerRedux } from "dva/router"
 export default {
 
   namespace: 'example',
@@ -28,6 +29,12 @@ export default {
           }
         }
       })
+    },
+    *login({ payload}, {call, put }) {
+      yield put(routerRedux.replace('/Option'))
+    },
+    *loginOut({ payload}, { call, put }){
+      yield put(routerRedux.replace('/login'))
     }
   },
 
