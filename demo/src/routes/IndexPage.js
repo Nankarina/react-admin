@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react'
 // import { connect } from 'dva'
-import { Layout, Menu,  Icon } from 'antd'
+import { Layout, Menu, Icon } from 'antd'
 import HeaderPage from '../components/Layout/Header'
 import menu from '../common/menu'
 import MenuItem from 'antd/lib/menu/MenuItem'
@@ -58,24 +58,24 @@ export default class LayoutAdmin extends PureComponent {
         </Header>
         <Layout style={{ background: '#fff' }}>
           <Sider
-              collapsed={collapsed}
-              collapsible
-              onCollapse={this.onCollapse}
+            collapsed={collapsed}
+            collapsible
+            onCollapse={this.onCollapse}
           >
             <Menu
-                defaultSelectedKeys={['0']}
-                mode="inline"
-                theme="dark"
+              defaultSelectedKeys={['0']}
+              mode="inline"
+              theme="dark"
             >
               {
                 singleMenu.length && singleMenu.map((item, index) => (
                   <Menu.Item
-                      key={index}
-                      onClick={() => this.handleSet(item)}
+                    key={index}
+                    onClick={() => this.handleSet(item)}
                   >
                     <Link
-                        replace={hiStatus}
-                        to={`/${item.name}`}
+                      replace={hiStatus}
+                      to={`/${item.name}`}
                     >
                       <Icon type={item.icon} />
                       <span>{item.name}</span>
@@ -88,13 +88,15 @@ export default class LayoutAdmin extends PureComponent {
               {
                 doubleMenu.length && doubleMenu.map((item) => (
                   <SubMenu key={item.name}
-                      title={<span><Icon type={item.icon} /><span>{item.name}</span></span>}
+                    title={<span><Icon type={item.icon} /><span>{item.name}</span></span>}
                   >
                     {
                       item.children.map((item) => (
                         <MenuItem key={item.name}>
-                          <Icon type={item.icon} />
-                          <span>{item.name}</span>
+                          <Link replace={hiStatus} to={`/${item.name}`}>
+                            <Icon type={item.icon} />
+                            <span>{item.name}</span>
+                          </Link>
                         </MenuItem>
                       ))
                     }
@@ -104,8 +106,8 @@ export default class LayoutAdmin extends PureComponent {
             </Menu>
           </Sider>
           <Layout>
-            <Content style={{ margin: '0 16px',minHeight: 903 }}>
-              <Banner dataList={bill}/>
+            <Content style={{ margin: '0 16px', minHeight: 903 }}>
+              <Banner dataList={bill} />
               {this.props.children}
             </Content>
             <Footer style={{ textAlign: 'center' }}>

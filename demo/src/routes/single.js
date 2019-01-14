@@ -1,10 +1,10 @@
 import React, { PureComponent } from 'react'
+import { Spin } from 'antd'
 class Single extends PureComponent {
   render() {
-    return (
-      <div className="context">我是single部分</div>
+    return(
+      <div className="context">test</div>
     )
   }
 }
-
 export default Single
