@@ -31,7 +31,7 @@ export default {
       })
     },
     *login({ payload}, {call, put }) {
-      yield put(routerRedux.replace('/Option'))
+      yield put(routerRedux.replace('/example'))
     },
     *loginOut({ payload}, { call, put }){
       yield put(routerRedux.replace('/login'))

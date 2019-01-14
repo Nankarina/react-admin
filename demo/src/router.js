@@ -74,5 +74,4 @@ function RouterConfig({ history }) {
     </IntlProvider>
   );
 }
-
 export default RouterConfig;

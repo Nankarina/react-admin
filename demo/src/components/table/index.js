@@ -5,8 +5,9 @@ class TablePage extends PureComponent {
     const { dataSource, columns } = this.props
     return (
       <Table
-          columns={columns}
-          dataSource={dataSource}
+        columns={columns}
+        dataSource={dataSource}
+        rowKey={(record, key) => key}
       />
     )
   }
