@@ -3,7 +3,6 @@ import { Icon, Menu, Dropdown, Button } from 'antd'
 import { FormattedMessage } from 'react-intl'
 import zh from '../../i18n/zh_CN'
 import { connect } from "dva"
-
 import styles from './index.less'
 
 class Header extends PureComponent {

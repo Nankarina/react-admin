@@ -21,9 +21,6 @@ function checkStatus(response) {
  * @return {object}           An object containing either "data" or "err"
  */
 export default function request(url, options, methods) {
-  console.log(url)
-  console.log(options)
-  console.log(methods)
   return fetch(url, options, methods)
     .then(checkStatus)
     .then(parseJSON)

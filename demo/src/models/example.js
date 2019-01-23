@@ -1,4 +1,4 @@
-import { getCompanyList } from '../services/example'
+import { getDataList } from '../services/example'
 import { routerRedux } from "dva/router"
 export default {
 
@@ -19,8 +19,8 @@ export default {
     *fetch({ payload }, { call, put }) {  // eslint-disable-line
       yield put({ type: 'save' });
     },
-    *getCompanyList({ payload}, {call, put}) {
-      const { rows } = yield call(getCompanyList, payload)
+    *getDataList({ payload}, {call, put}) {
+      const { rows } = yield call(getDataList, payload)
       yield put({
         type:'save',
         payload: {

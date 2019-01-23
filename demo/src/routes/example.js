@@ -1,7 +1,14 @@
 import  { PureComponent } from 'react'
 import TableExample from '../../src/components/table'
+import { connect } from 'dva'
 import uuid from 'uuid'
 class Example extends PureComponent {
+  componentDidMount() {
+    // const { dispatch } = this.props
+    // dispatch({
+    //   type: 'example/getDataList'
+    // })
+  }
   render() {
     const columns = [{
       title: '序号',
@@ -43,4 +50,4 @@ class Example extends PureComponent {
     )
   }
 }
-export default Example
+export default connect()(Example)

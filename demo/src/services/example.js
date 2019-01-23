@@ -1,5 +1,5 @@
 import request from '../utils/request';
-import { ORG_LIST } from '../utils/api'
+import { ORG_LIST, DATA_LIST } from '../utils/api'
 export function query() {
   return request('/api/users');
 }
@@ -9,3 +9,11 @@ export function getCompanyList() {
   }
   )
 }
+
+export function getDataList() {
+  return request(DATA_LIST,{
+    methods: 'GET'
+  }
+  )
+}
+

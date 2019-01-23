@@ -24,15 +24,13 @@ addLocaleData([...en, ...zh])
 
 const { ConnectedRouter } = routerRedux
 
-let messageLan = {}
+let messageLan = zhCN
 if(localStorage.lan && localStorage.getItem('lan') === 'zh_CN'){
   messageLan = zhCN
 }else if(localStorage.lan && localStorage.getItem('lan') === 'en_US'){
   messageLan = enUS
 }
-const enterTab = () => {
-  console.log('进入路由做一些事情，嘿嘿嘿')
-}
+
 function RouterConfig({ history }) {
   return (
     <IntlProvider locale={navigator.language} messages={messageLan}>
@@ -42,7 +40,6 @@ function RouterConfig({ history }) {
           component={Login}
           exact
           path="/login"
-          onEnter={enterTab.bind(this)}
         />
         <Route
           component={Login}
