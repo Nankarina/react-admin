@@ -7,8 +7,11 @@ import { connect } from "dva"
 import styles from './index.less'
 
 class Header extends PureComponent {
+  state = {
+    lanType: localStorage.lan && localStorage.getItem('lan') ? localStorage.getItem('lan') : 'zh_CN',
+  }
+
   loginOut = () =>{
-    console.log('in')
     const { dispatch } = this.props
     dispatch({
       type: 'example/loginOut'
@@ -16,11 +19,31 @@ class Header extends PureComponent {
       localStorage.setItem('user','已退出')
     })
   }
+
   handleChange = (lan) => {
-    localStorage.setItem('lan',lan)
+    localStorage.setItem('lan', lan)
+    this.setState({
+      lanType: lan,
+    })
     window.location.reload()
   }
+
   render() {
+    const { lanType } = this.state
+    const selected = localStorage.getItem('lan')
+    let lastSelected = 'default'
+    let lastSelectedEn = 'default'
+    if (lanType === selected && selected === 'zh_CN') {
+      lastSelected = 'primary'
+    } else {
+      lastSelected = 'default'
+    }
+    if (lanType === selected && selected === 'en_US') {
+      lastSelectedEn = 'primary'
+    } else {
+      lastSelectedEn = 'default'
+    }
+
     const menu = (
       <Menu>
         <Menu.Item>
@@ -38,11 +61,15 @@ class Header extends PureComponent {
               rel="noopener noreferrer"
               target="_blank"
 
-          >设置</a>
+          >
+            <FormattedMessage id="set"/>
+          </a>
         </Menu.Item>
         <Menu.Item>
           <a onClick={() => this.loginOut()}
-          >退出登录</a>
+          >
+            <FormattedMessage id="logout"/>
+          </a>
         </Menu.Item>
       </Menu>
     )
@@ -53,17 +80,24 @@ class Header extends PureComponent {
               alt="图片"
               src="../../../public/img/logo.jpg"
           />
-          <span>后台管理系统</span>
+          <span>
+            <FormattedMessage id="backMannger"/>
+          </span>
         </div>
-        <Button onClick={() => this.handleChange('zh_CN')}>中文</Button>
-        <Button style={{margin:'0 10px'}} onClick={() => this.handleChange('en_US')}>英文</Button>
+        <Button onClick={() => this.handleChange('zh_CN')} type={lastSelected}>
+          <FormattedMessage id="chinese"/>
+        </Button>
+        <Button style={{margin:'0 10px'}} onClick={() => this.handleChange('en_US')} type={lastSelectedEn}>
+          <FormattedMessage id="english"/>
+        </Button>
         <div className={styles.headerRight}>
           <Dropdown overlay={menu}>
             <a className="ant-dropdown-link">
-              <Icon
+              {/* <Icon
                   style={{ marginRight: '7px' }}
                   type="smile"
-              />
+              /> */}
+              <img src="../../../public/img/person.jpg"  alt="图片" style={{width: '50px', height: '50px', borderRadius: '50%', marginRight: '17px'}}/>
               <span>admin</span>
               <Icon type="down" />
             </a>
