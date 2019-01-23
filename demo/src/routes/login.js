@@ -34,7 +34,7 @@ class Login extends PureComponent {
       <div className={styles.login_style}>
         <div className={styles.login_main}>
           <div className={styles.login_name}>
-            AC·管理中心
+            后台管理系统
 					</div>
           <div className={styles.login_form}>
             <Form onSubmit={this.handleSubmit} className="login-form">
@@ -61,9 +61,9 @@ class Login extends PureComponent {
               </FormItem>
             </Form>
           </div>
-          <div className={styles.login_version}>
+          {/* <div className={styles.login_version}>
             Copyright <Icon type="copyright" />2014-2018 沃朴物联 版权所有 / 浙公网备案 33011022012770 号
-					</div>
+					</div> */}
         </div>
       </div>
     )
