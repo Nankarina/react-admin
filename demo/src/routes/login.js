@@ -69,4 +69,5 @@ class Login extends PureComponent {
     )
   }
 }
+
 export default connect()(Login)
