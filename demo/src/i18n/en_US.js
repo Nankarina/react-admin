@@ -1,4 +1,5 @@
 const en_US = {
-    name: 'name'
+    'name': 'name',
+    'person': 'person center'
 }
 export default en_US

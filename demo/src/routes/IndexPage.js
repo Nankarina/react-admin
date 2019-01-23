@@ -1,5 +1,5 @@
-import React, { PureComponent } from 'react'
-// import { connect } from 'dva'
+import  { PureComponent } from 'react'
+import { connect } from 'dva'
 import { Layout, Menu, Icon } from 'antd'
 import HeaderPage from '../components/Layout/Header'
 import menu from '../common/menu'
@@ -7,12 +7,10 @@ import MenuItem from 'antd/lib/menu/MenuItem'
 import Banner from '../components/Layout/banner'
 // import Main from '../components/Layout/main'
 import { Link } from 'dva/router'
-// import styles from './IndexPage.less'
-
 const { Header, Content, Footer, Sider } = Layout
 const SubMenu = Menu.SubMenu
 
-export default class LayoutAdmin extends PureComponent {
+class LayoutAdmin extends PureComponent {
   state = {
     collapsed: false,
     singleMenu: [],
@@ -21,9 +19,21 @@ export default class LayoutAdmin extends PureComponent {
   }
 
   componentDidMount() {
+    const { dispatch } = this.props
+    if(localStorage.user && localStorage.getItem('user') !== '已登录'){
+      dispatch({
+        type: 'example/redirect',
+        payload: {
+          name: '/login'
+        }
+      })
+    }
     this.handleMenu()
   }
 
+  componentWillMount() {
+   
+  }
   onCollapse = (collapsed) => {
     this.setState({ collapsed })
   }
@@ -119,3 +129,4 @@ export default class LayoutAdmin extends PureComponent {
     )
   }
 }
+export default connect()(LayoutAdmin)

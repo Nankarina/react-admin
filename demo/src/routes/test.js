@@ -1,4 +1,4 @@
-import React, { PureComponent } from 'react'
+import { PureComponent } from 'react'
 import PropTypes from "prop-types"
 // 纯函数：不改变自身的输入值
 function sum(a, b) {
@@ -44,12 +44,12 @@ function Greeting(props) {
   return <GuestGreeting />;
 }
 
-function RenderLi(props){
-  const li = props.li
-  return(
-    <li>{li}</li>
-  )
-}
+// function RenderLi(props){
+//   const li = props.li
+//   return(
+//     <li>{li}</li>
+//   )
+// }
 
 // 封装的渲染组件
 function RenderUl(props) {

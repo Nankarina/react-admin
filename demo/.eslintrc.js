@@ -2,7 +2,7 @@
  * @desc esLint配置文件
  */
 
- module.exports = {
+module.exports = {
   parser: "babel-eslint",
   extends: ["airbnb", "prettier"],
   env: {

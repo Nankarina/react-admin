@@ -1,4 +1,4 @@
-import React, { PureComponent } from 'react'
+import { PureComponent } from 'react'
 import { Form, Icon, Input, Button, Spin } from 'antd'
 import styles from './login.less'
 import { connect } from "dva"
@@ -18,6 +18,7 @@ class Login extends PureComponent {
         dispatch({
           type: 'example/login'
         })
+        localStorage.setItem('user', '已登录')
         this.setState({
           loading: true
         })

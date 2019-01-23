@@ -1,4 +1,4 @@
-import react, { PureComponent } from 'react'
+import  { PureComponent } from 'react'
 import TableExample from '../../src/components/table'
 import uuid from 'uuid'
 class Example extends PureComponent {

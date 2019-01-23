@@ -35,7 +35,12 @@ export default {
     },
     *loginOut({ payload}, { call, put }){
       yield put(routerRedux.replace('/login'))
-    }
+    },
+    * redirect ({ payload }, { put }) {
+      const { name } = payload
+      yield put(routerRedux.push(name));
+    },
+    
   },
 
   reducers: {

@@ -1,5 +1,5 @@
-import React, { PureComponent } from 'react'
-import TablePage from '../components/table/index'
+import { PureComponent } from 'react'
+// import TablePage from '../components/table/index'
 import { Table } from 'antd'
 import { connect } from 'dva'
 // @connect(({ loading, example }) => ({

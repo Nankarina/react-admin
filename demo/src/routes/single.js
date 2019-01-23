@@ -1,5 +1,5 @@
-import React, { PureComponent } from 'react'
-import { Spin } from 'antd'
+import { PureComponent } from 'react'
+// import { Spin } from 'antd'
 class Single extends PureComponent {
   render() {
     return(
